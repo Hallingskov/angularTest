@@ -9,6 +9,9 @@ import { Console, error } from 'console';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(), provideHttpClient(),provideCharts(withDefaultRegisterables()),
+    provideRouter(routes),
+     provideClientHydration(),
+      provideHttpClient(),
+      provideCharts(withDefaultRegisterables()),
   ]
 };
