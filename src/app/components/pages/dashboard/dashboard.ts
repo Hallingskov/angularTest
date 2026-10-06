@@ -30,7 +30,7 @@ public lineChartData: ChartConfiguration<'line'>['data'] = {
 
 private buildChartData(orders: any[]): void {
   const salesByDate: Record<string, number> = {};
-  
+
 
 }
-
+}
