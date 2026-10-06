@@ -9,7 +9,7 @@ import {ChartConfiguration} from 'chart.js';
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Dashboard, BaseChartDirective],
+  imports: [RouterOutlet, Header, Dashboard],
   templateUrl:'./app.html',
   styleUrl:'./app.css'
 })

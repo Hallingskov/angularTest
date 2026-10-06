@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
+import { OrderService } from '../../../services/orderService';
+import { Injectable, inject } from '@angular/core';
+import { ChartConfiguration } from 'chart.js';
+import { ServerTestingModule } from '@angular/platform-server/testing';
 
 @Component({
   imports: [BaseChartDirective],
@@ -9,20 +13,24 @@ import { BaseChartDirective } from 'ng2-charts';
 })
 
 export class Dashboard {
-labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+private orderService = inject(OrderService);
 
-data: Array<any> = [10, 20, 30, 40, 50]
-
-type = 'line';
-
-options = {
-  backgroundColor: 'rgba(245, 248, 248, 0.4)',
-  borderColor: 'rgba(75,192,192,1)',
-  borderWidth: 1,
-  hoverBackgroundColor: 'rgba(75,192,192,0.6)',
-  hoverBorderColor: 'rgba(75,192,192,1)',
+constructor(){
+  this.orderService.getOrders().subscribe(orders => {
+    console.log('Orders:', orders);
+  });
 }
 
+public lineChartData: ChartConfiguration<'line'>['data'] = {
+  labels: [],
+  datasets: [
+    {data: [], label: 'Salg (kr.)'}
+  ]
+};
 
+private buildChartData(orders: any[]): void {
+  const salesByDate: Record<string, number> = {};
+  
 
 }
+
