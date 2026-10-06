@@ -14,23 +14,39 @@ import { ServerTestingModule } from '@angular/platform-server/testing';
 
 export class Dashboard {
 private orderService = inject(OrderService);
+labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
 
 constructor(){
   this.orderService.getOrders().subscribe(orders => {
-    console.log('Orders:', orders);
+    this.buildChartData(orders);
   });
 }
 
+
+
 public lineChartData: ChartConfiguration<'line'>['data'] = {
-  labels: [],
-  datasets: [
-    {data: [], label: 'Salg (kr.)'}
+  labels: this.labels,
+  datasets: [{
+    data: [], 
+    label: 'Salg (kr.)',
+    
+    
+    
+    
+    }
   ]
 };
 
 private buildChartData(orders: any[]): void {
-  const salesByDate: Record<string, number> = {};
-
-
+  let salesByDate: string[] = [];
+  let price: number[] = [];
+  orders.forEach(order => {
+    price.push(order.price);
+    salesByDate.push(order.orderDate);
+  })
+return this.lineChartData = {
+  
+}
 }
 }
