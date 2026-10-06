@@ -2,8 +2,9 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideCharts,withDefaultRegisterables, } from 'ng2-charts';
+
 import { Console, error } from 'console';
 
 export const appConfig: ApplicationConfig = {
@@ -13,5 +14,7 @@ export const appConfig: ApplicationConfig = {
      provideClientHydration(),
       provideHttpClient(),
       provideCharts(withDefaultRegisterables()),
+      provideCharts(withDefaultRegisterables()),
+      provideHttpClient(withFetch()),
   ]
 };
