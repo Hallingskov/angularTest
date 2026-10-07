@@ -1,3 +1,9 @@
 <p>dashboard works!</p>
 <h1>Line Diagram!</h1>
-<canvas baseChart [data] = "lineChartData" [type]="'line'"></canvas>
+<canvas baseChart [data]="lineChartData" [type]="'line'"></canvas>
+
+<h1>Circle Diagram!</h1>
+
+<canvas baseChart [data]="circleChartData" [type]="'pie'"></canvas>
+
+<button (click)="getOrders()">Get Orders</button>

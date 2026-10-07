@@ -6,6 +6,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { orders } from './server/data';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -27,6 +28,12 @@ const angularApp = new AngularNodeAppEngine();
 /**
  * Serve static files from /browser
  */
+
+app.get('/api/orders', (req, res) => {
+  console.log("Orders API called");
+  res.send(orders);
+}); 
+
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
